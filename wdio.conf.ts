@@ -120,7 +120,7 @@ export const config = {
     services: [
         ['sauce', {
             browserName: 'chrome',
-            platformName: 'Mac 10.6',
+            platformName: 'Windows 10',
             browserVersion: 'latest',
             sauceConnect: true,
             //driverConnection:'https://oauth-www.shubhamyadav1996-ebb0c:da1616e7-6e6f-4d56-811d-8637af03843b@ondemand.eu-central-1.saucelabs.com:443/wd/hub',
