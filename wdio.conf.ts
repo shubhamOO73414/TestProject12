@@ -158,9 +158,9 @@ export const config = {
         'spec',
         ['junit', {
             outputDir: './report',
-            // outputFileFormat: function(options) { // optional
-            //     return `results-${options.cid}.${options.capabilities}.xml`
-            // }
+            outputFileFormat: function(options) { // optional
+               return `results-${new Date().getTime()}.xml`
+            }
         }]
     ],
 
