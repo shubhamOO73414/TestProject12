@@ -49,7 +49,11 @@ export const config = {
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
+    user:'oauth-www.shubhamyadav1996-ebb0c',
+    key:'da1616e7-6e6f-4d56-811d-8637af03843b',
+
     //
+    region:'eu',
     capabilities: [{
 
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
@@ -111,7 +115,23 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    //services: ['chromedriver'],
+    //services: ['selenium-standalone'],
+    services: [
+        ['sauce', {
+            browserName: 'chrome',
+            platformName: 'Mac 10.6',
+            browserVersion: 'latest',
+            sauceConnect: true,
+            //driverConnection:'https://oauth-www.shubhamyadav1996-ebb0c:da1616e7-6e6f-4d56-811d-8637af03843b@ondemand.eu-central-1.saucelabs.com:443/wd/hub',
+            sauceConnectOpts: {
+                // ...
+                //tunnelIdentifier:'./sc -u oauth-www.shubhamyadav1996-ebb0c -k da1616e7-6e6f-4d56-811d-8637af03843b --region eu-central --tunnel-name oauth-www.shubhamyadav1996-ebb0c_tunnel_name',
+                //screenResolution: '1600x1200'
+
+            }
+        }]
+    ],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -133,8 +153,16 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
-
+    //reporters: ['spec'],
+    reporters: [
+        'spec',
+        ['junit', {
+            outputDir: './report',
+            // outputFileFormat: function(options) { // optional
+            //     return `results-${options.cid}.${options.capabilities}.xml`
+            // }
+        }]
+    ],
 
     //
     cucumberOpts: {
@@ -180,8 +208,8 @@ export const config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+     onPrepare: function (config, capabilities) {
+     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -191,8 +219,8 @@ export const config = {
      * @param  {[type]} args     object that will be merged with the main configuration once worker is initialised
      * @param  {[type]} execArgv list of string arguments passed to the worker process
      */
-    // onWorkerStart: function (cid, caps, specs, args, execArgv) {
-    // },
+     onWorkerStart: function (cid, caps, specs, args, execArgv) {
+    },
     /**
      * Gets executed just before initialising the webdriver session and test framework. It allows you
      * to manipulate configurations depending on the capability or spec.
@@ -201,8 +229,8 @@ export const config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      * @param {String} cid worker id (e.g. 0-0)
      */
-    // beforeSession: function (config, capabilities, specs, cid) {
-    // },
+     beforeSession: function (config, capabilities, specs, cid) {
+     },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.
