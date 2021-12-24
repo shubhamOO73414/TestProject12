@@ -1,20 +1,19 @@
-pipeline {
-agent any
+node {
     stages {
-        stage ('Sauce lab') {
-           echo 'Sauce lab'
+        stage ('install dependecies') {
+           bat 'npm install'
         }
-        stage ('Allure report') {
-
+        stage ('Sauce lab') {
+            bat 'npm run wdio'
         }
         stage ('Cucumber Report') {
-
+            echo 'shubham'
         }
         stage ('Timeline report') {
-
+            echo 'shubham'
         }
         stage ('Email connection') {
-
+            echo 'shubham'
         }
 
     }
