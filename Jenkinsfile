@@ -1,19 +1,21 @@
-node {
+pipeline {
     stages {
         stage ('install dependecies') {
-           bat 'npm install'
+           steps{
+            bat 'npm install'
+           }
         }
         stage ('Sauce lab') {
-            bat 'npm run wdio'
+             steps{bat 'npm run wdio'}
         }
         stage ('Cucumber Report') {
-            echo 'shubham'
+             steps{echo 'shubham'}
         }
         stage ('Timeline report') {
-            echo 'shubham'
+             steps{echo 'shubham'}
         }
         stage ('Email connection') {
-            echo 'shubham'
+             steps{echo 'shubham'}
         }
 
     }
