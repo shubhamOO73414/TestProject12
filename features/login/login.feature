@@ -1,4 +1,4 @@
-Feature: performing login into ultimatix
+Feature: performing login into facebook
 
   Background:
     Given I'm in login page

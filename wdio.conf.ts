@@ -1,4 +1,4 @@
-
+const { TimelineService } = require('wdio-timeline-reporter/timeline-service');
 export const config = {
     //
     // ====================
@@ -130,7 +130,7 @@ export const config = {
                 //screenResolution: '1600x1200'
 
             }
-        }]
+        }],[TimelineService]
     ],
 
     // Framework you want to run your specs with.
@@ -157,11 +157,22 @@ export const config = {
     reporters: [
         'spec',
         ['junit', {
-            outputDir: './report',
+            outputDir: './report/junit',
             outputFileFormat: function(options) { // optional
                return `results-${new Date().getTime()}.xml`
             }
-        }]
+        }],
+        // [ 'cucumberjs-json', {
+        //     jsonFolder: './report/cucumber-report',
+        //     language: 'en',
+        // },
+        // ],
+        ['allure', {
+            outputDir: './report/allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: true,
+        }],
+        ['timeline', { outputDir: './report/timeline' }]
     ],
 
     //
