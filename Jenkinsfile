@@ -12,7 +12,7 @@ pipeline {
         stage ('Email sent') {
              steps{emailext body: '''Hi Shubham,
 
-                        Please check automation report.''', subject: 'Automation Report', to: 'www.shubhamyadav1996@gmail.com'
+                        Please check automation report.''', subject: 'Automation daily Report', to: 'www.shubhamyadav1996@gmail.com'
                         }
         }
         stage ('allure report') {
