@@ -19,7 +19,7 @@ pipeline {
              steps{
              allure([
                              includeProperties: false,
-                             jdk: '',
+                             jdk: 'C:\Program Files\Java\jre1.8.0_301\bin',
                              properties: [],
                              reportBuildPolicy: 'ALWAYS',
                              results: [[path: 'report/allure-results']]
