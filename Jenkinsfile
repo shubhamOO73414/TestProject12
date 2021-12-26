@@ -16,7 +16,17 @@ pipeline {
                         }
         }
         stage ('allure report') {
-             steps{bat 'npm run allure_report'}
+             steps{
+             allure([
+                             includeProperties: false,
+                             jdk: '',
+                             properties: [],
+                             reportBuildPolicy: 'ALWAYS',
+                             results: [[path: 'report/allure-results']]
+                           ])
+
+
+             }
         }
         stage ('Junit report') {
              steps{  junit './report/junit/*.xml'}
