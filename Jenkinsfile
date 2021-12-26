@@ -7,7 +7,7 @@ pipeline {
            }
         }
         stage ('Sauce lab') {
-             steps{bat 'npm run wdio'}
+             steps{bat 'npm run test'}
         }
         stage ('Email sent') {
              steps{emailext body: '''Hi Shubham,
@@ -15,11 +15,11 @@ pipeline {
                         Please check automation report.''', subject: 'Automation Report', to: 'www.shubhamyadav1996@gmail.com'
                         }
         }
-        stage ('Timeline report') {
-             steps{echo 'shubham'}
+        stage ('allure report') {
+             steps{bat 'npm run allure_report'}
         }
         stage ('Junit report') {
-             steps{junit './report/junit/*.xml'}
+             steps{  junit './report/junit/*.xml'}
         }
 
     }

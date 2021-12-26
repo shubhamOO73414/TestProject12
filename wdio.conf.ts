@@ -171,6 +171,7 @@ export const config = {
             outputDir: './report/allure-results',
             disableWebdriverStepsReporting: true,
             disableWebdriverScreenshotsReporting: true,
+            useCucumberStepReporter:true
         }],
         ['timeline', { outputDir: './report/timeline' }]
     ],
