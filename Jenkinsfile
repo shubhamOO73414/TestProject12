@@ -15,19 +15,7 @@ pipeline {
                         Please check automation report.''', subject: 'Automation daily Report', to: 'www.shubhamyadav1996@gmail.com'
                         }
         }
-        stage ('allure report') {
-             steps{
-             allure([
-                             includeProperties: false,
-                             jdk: '',
-                             properties: [],
-                             reportBuildPolicy: 'ALWAYS',
-                             results: [[path: 'report/allure-results/*.xml']]
-                           ])
 
-
-             }
-        }
         stage('timeline report'){
             steps{
             publishHTML target: [
@@ -43,6 +31,19 @@ pipeline {
         stage ('Junit report') {
              steps{  junit './report/junit/*.xml'}
         }
+        stage ('allure report') {
+                     steps{
+                     allure([
+                                     includeProperties: false,
+                                     jdk: '',
+                                     properties: [],
+                                     reportBuildPolicy: 'ALWAYS',
+                                     results: [[path: 'report/allure-results/*.xml']]
+                                   ])
+
+
+                     }
+                }
 
     }
  }
