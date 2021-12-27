@@ -18,14 +18,13 @@ pipeline {
 
         stage('timeline report'){
             steps{
-            publishHTML target: [
-                                    allowMissing:false,
-                                    alwaysLinkToLastBuild: false,
-                                    keepAll:true,
-                                    reportDir: 'report/timeline',
-                                    reportFiles: 'timeline-report.html',
-                                    reportName: 'timeline report'
-                                ]
+            publishHTML ([allowMissing: false,
+             alwaysLinkToLastBuild: true,
+              keepAll: false,
+               reportDir: 'report/timeline',
+               reportFiles: 'timeline-report.html',
+               reportName: 'Timeline report',
+              reportTitles: ''])
             }
         }
         stage ('Junit report') {
