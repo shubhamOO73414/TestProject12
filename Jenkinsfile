@@ -27,6 +27,9 @@ pipeline {
               reportTitles: ''])
             }
         }
+        stage ('Junit report') {
+                     steps{  junit './report/junit/*.xml'}
+                }
         stage ('allure report') {
                              steps{
                              allure([
@@ -40,9 +43,7 @@ pipeline {
 
                              }
                         }
-        stage ('Junit report') {
-             steps{  junit './report/junit/*.xml'}
-        }
+
 
     }
     post {
