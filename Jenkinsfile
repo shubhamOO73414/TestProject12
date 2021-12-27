@@ -27,22 +27,27 @@ pipeline {
               reportTitles: ''])
             }
         }
-        stage ('Junit report') {
-             steps{  junit './report/junit/*.xml'}
-        }
         stage ('allure report') {
-                     steps{
-                     allure([
-                                     includeProperties: false,
-                                     jdk: '',
-                                     properties: [],
-                                     reportBuildPolicy: 'ALWAYS',
-                                     results: [[path: 'report/allure-results/*.xml']]
-                                   ])
+                             steps{
+                             allure([
+                                             includeProperties: false,
+                                             jdk: '',
+                                             properties: [],
+                                             reportBuildPolicy: 'ALWAYS',
+                                             results: [[path: 'report/allure-results']]
+                                           ])
 
 
-                     }
-                }
-
+                             }
+                        }
+//         stage ('Junit report') {
+//              steps{  junit './report/junit/*.xml'}
+//         }
+//
     }
+    post {
+            always {
+                junit './report/junit/*.xml'
+            }
+        }
  }
