@@ -22,11 +22,23 @@ pipeline {
                              jdk: '',
                              properties: [],
                              reportBuildPolicy: 'ALWAYS',
-                             results: [[path: 'report/allure-results']]
+                             results: [[path: 'report/allure-results/*.xml']]
                            ])
 
 
              }
+        }
+        stage('timeline report'){
+            steps{
+            publishHTML target: [
+                                    allowMissing:false,
+                                    alwaysLinkToLastBuild: false,
+                                    keepAll:true,
+                                    reportDir: 'report/timeline',
+                                    reportFiles: 'timeline-report.html',
+                                    reportName: 'timeline report'
+                                ]
+            }
         }
         stage ('Junit report') {
              steps{  junit './report/junit/*.xml'}
