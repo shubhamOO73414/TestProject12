@@ -40,19 +40,13 @@ pipeline {
 
                              }
                         }
-//         stage ('Junit report') {
-//              steps{  junit './report/junit/*.xml'}
-//         }
-//
+        stage ('Junit report') {
+             steps{  junit './report/junit/*.xml'}
+        }
+
     }
     post {
             always {
-                junit './report/junit/*.xml'
+                cleanWs()
             }
         }
-         post {
-                always {
-                    cleanWs()
-                }
-            }
- }
