@@ -50,4 +50,9 @@ pipeline {
                 junit './report/junit/*.xml'
             }
         }
+         post {
+                always {
+                    cleanWs()
+                }
+            }
  }
