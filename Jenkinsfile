@@ -18,17 +18,26 @@ pipeline {
 
         stage('timeline report'){
             steps{
-            publishHTML ([allowMissing: false,
-             alwaysLinkToLastBuild: true,
-              keepAll: false,
-               reportDir: 'report/timeline',
-               reportFiles: 'timeline-report.html',
-               reportName: 'Timeline report',
-              reportTitles: ''])
+//             publishHTML ([allowMissing: false,
+//              alwaysLinkToLastBuild: true,
+//               keepAll: false,
+//                reportDir: 'report/timeline',
+//                reportFiles: 'timeline-report.html',
+//                reportName: 'Timeline report',
+//               reportTitles: 'Timeline report'])
+
+              publishHTML (target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: 'report/timeline',
+                    reportFiles: 'timeline-report.html',
+                    reportName: "Timeline report"
+                  ])
             }
         }
         stage ('Junit report') {
-                     steps{  junit './report/junit/*.xml'}
+                     steps{  junit './report/junit/'}
                 }
         stage ('allure report') {
                              steps{
@@ -46,9 +55,9 @@ pipeline {
 
 
     }
-    post {
-            always {
-                cleanWs()
-            }
-        }
+//     post {
+//             always {
+//                 cleanWs()
+//             }
+//         }
 }
