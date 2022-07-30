@@ -10,7 +10,7 @@ Feature: performing login into facebook
     Then verify error message <msg>
     Examples:
      |username|password|msg|
-    |shubham3414|sd@41254|The email address or mobile number you entered isn't connected to an account.|
+    |shubham3414|sd@41254|Forgotten password?|
 
 #  Scenario Outline: Login with default user
 #    When login with default user <username>

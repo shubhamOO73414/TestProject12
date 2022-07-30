@@ -5,18 +5,10 @@ class login{
     // private proceed:string='#proceed-button';
     // private user1:=$('#form1');
 
-    get user(){
-        return $('body #email');
-    }
-    get password(){
-        return $('body #pass');
-    }
-    get proceedButton(){
-        return $('body [name="login"]');
-    }
-    get errorMsg(){
-        return $('body //*[@id="email_container"]/div[2]')
-    }
+    get user(){return $('#email');}
+    get password(){return $('#pass');}
+    get proceedButton(){return $('#loginbutton');}
+    get errorMsg(){return $('#loginform>div>div:nth-child(2)>a')}
 
     public enterUser(email:string){
       //$(this.user).waitForDisplayed({ timeout: 10000 });
@@ -31,8 +23,8 @@ class login{
     public enterPass(pass:string){
         return this.password.setValue(pass);
     }
-    public verifyMsg(msg:string){
-        return this.errorMsg.getText() === msg;
+    async verifyMsg(msg:string){
+        return await this.errorMsg.getText() === msg;
     }
 
 

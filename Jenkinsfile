@@ -37,7 +37,7 @@ pipeline {
             }
         }
         stage ('Junit report') {
-                     steps{  junit './report/junit/'}
+                     steps{  junit './report/junit/*.xml'}
                 }
         stage ('allure report') {
                              steps{

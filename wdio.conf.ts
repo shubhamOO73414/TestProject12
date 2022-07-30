@@ -49,8 +49,8 @@ export const config = {
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
-    user:'oauth-www.shubhamyadav1996-ebb0c',
-    key:'da1616e7-6e6f-4d56-811d-8637af03843b',
+    // user:'oauth-www.shubhamyadav1996-ebb0c',
+    // key:'da1616e7-6e6f-4d56-811d-8637af03843b',
 
     //
     region:'eu',
@@ -61,13 +61,22 @@ export const config = {
         // 5 instances get started at a time.
         maxInstances: 1,
         //
-        browserName: 'chrome',
-        acceptInsecureCerts: true
+        browserName: 'chrome'
+        // platformName: 'Windows 10',
+        // acceptInsecureCerts: true
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    }
+    // ,{
+    //     maxInstances: 1,
+    //     //
+    //     browserName: 'MicrosoftEdge',
+    //     platformName: 'Windows 10',
+    //     acceptInsecureCerts: true
+    // }
+    ],
     //
     // ===================
     // Test Configurations
@@ -115,23 +124,27 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    //services: ['chromedriver'],
+    services: ['chromedriver'],
     //services: ['selenium-standalone'],
-    services: [
-        ['sauce', {
-            browserName: 'chrome',
-            platformName: 'Windows 10',
-            browserVersion: 'latest',
-            sauceConnect: true,
-            //driverConnection:'https://oauth-www.shubhamyadav1996-ebb0c:da1616e7-6e6f-4d56-811d-8637af03843b@ondemand.eu-central-1.saucelabs.com:443/wd/hub',
-            sauceConnectOpts: {
-                // ...
-                //tunnelIdentifier:'./sc -u oauth-www.shubhamyadav1996-ebb0c -k da1616e7-6e6f-4d56-811d-8637af03843b --region eu-central --tunnel-name oauth-www.shubhamyadav1996-ebb0c_tunnel_name',
-                //screenResolution: '1600x1200'
-
-            }
-        }],[TimelineService]
-    ],
+    // services: [
+    //     ['sauce', {
+    //        browserName: 'chrome',
+    //         platformName: 'Windows 10',
+    //         browserVersion: 'latest',
+    //         sauceConnect: true,
+    //         //driverConnection:'https://oauth-www.shubhamyadav1996-ebb0c:da1616e7-6e6f-4d56-811d-8637af03843b@ondemand.eu-central-1.saucelabs.com:443/wd/hub',
+    //         sauceConnectOpts: {
+    //             // ...
+    //             //tunnelIdentifier:'./sc -u oauth-www.shubhamyadav1996-ebb0c -k da1616e7-6e6f-4d56-811d-8637af03843b --region eu-central --tunnel-name oauth-www.shubhamyadav1996-ebb0c_tunnel_name',
+    //             //screenResolution: '1600x1200'
+    //
+    //         }
+    //     }
+    //
+    //
+    //     ],[TimelineService]
+    // ],
+   // services:[['sauce'],[TimelineService]],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -231,8 +244,8 @@ export const config = {
      * @param  {[type]} args     object that will be merged with the main configuration once worker is initialised
      * @param  {[type]} execArgv list of string arguments passed to the worker process
      */
-     onWorkerStart: function (cid, caps, specs, args, execArgv) {
-    },
+    //  onWorkerStart: function (cid, caps, specs, args, execArgv) {
+    // },
     /**
      * Gets executed just before initialising the webdriver session and test framework. It allows you
      * to manipulate configurations depending on the capability or spec.

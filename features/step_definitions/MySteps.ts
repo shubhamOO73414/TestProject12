@@ -4,7 +4,7 @@ import {Login} from '../Pages/login';
 //const app=new login();
 
 Given(/^I'm in login page$/, async function () {
-   await browser.url("https://www.facebook.com/");
+   await browser.url("https://www.facebook.com/login");
 });
 When(/^login with default user (.+)$/, async function (txt) {
       //browser.pause(2000);
